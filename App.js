@@ -18,16 +18,11 @@ import {
 export default class createTaskList extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '', taskList: []};
   }
 
-  addTask(text){
-    debugger;
-    return (
-      <View>
-        <Text style={{flex:1}}>{text}</Text>
-      </View>
-    );
+  addTask(){
+    this.setState({taskList: [...this.state.taskList, this.state.text]})
   }
 
   render() {
@@ -42,8 +37,9 @@ export default class createTaskList extends Component {
         <Button
           title="Add"
           style={styles.button}
-          onPress={() => { this.addTask(this.state.text) }}
+          onPress={() => { this.addTask() }}
         />
+        {this.state.taskList.map(task => <Text>task</Text>)}
       </View>
     );
   }
