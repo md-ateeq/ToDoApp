@@ -22,7 +22,8 @@ export default class createTaskList extends Component {
   }
 
   addTask(){
-    this.setState({taskList: [...this.state.taskList, this.state.text]})
+    console.log("sdgvsdhgfvshdgf");
+    this.setState({taskList: [...this.state.taskList, this.state.text], text: ''});
   }
 
   render() {
@@ -39,7 +40,7 @@ export default class createTaskList extends Component {
           style={styles.button}
           onPress={() => { this.addTask() }}
         />
-        {this.state.taskList.map(task => <Text>task</Text>)}
+        {this.state.taskList.map((task,i) => <Text key={i}>{i + " " + task + "."}</Text>)}
       </View>
     );
   }
