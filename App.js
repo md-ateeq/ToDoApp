@@ -25,6 +25,12 @@ export default class createTaskList extends Component {
     console.log("sdgvsdhgfvshdgf");
     this.setState({taskList: [...this.state.taskList, this.state.text], text: ''});
   }
+  removeTask(i){
+    arr=this.state.taskList;
+    task=arr[i];
+    arr=arr.filter(item => item !== task);
+    this.setState({taskList: arr});
+  }
 
   render() {
     return (
@@ -40,7 +46,15 @@ export default class createTaskList extends Component {
           style={styles.button}
           onPress={() => { this.addTask() }}
         />
-        {this.state.taskList.map((task,i) => <Text key={i}>{i + " " + task + "."}</Text>)}
+        {this.state.taskList.map((task,i) => 
+        <View style={{flexDirection: "row", alignItems: "center"}}>
+          <Text key={i}>{i + " " + task + "."}</Text>
+          <Button
+           title="X"
+           onPress={() => {this.removeTask(i)}}>
+           </Button>
+        </View>
+        )}
       </View>
     );
   }
